@@ -1,66 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## 👨🏼‍💻 Laravel Spot Test Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Objective
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is a PHP-based application designed to demonstrate the creation of a REST API for processing new orders, integrating with a third-party API, and handling high demand for API requests efficiently. The project is implemented using the Laravel framework, adhering to the MVC design pattern, and includes both backend and frontend components.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Features
 
-## Learning Laravel
+#### REST API for New Orders:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- The API endpoint processes new orders and includes authentication.
+- The API request body contains at least two parameters: Customer Name and Order Value.
+- The API response includes Order ID, Process ID, and Status parameters.
+- The data is stored in a MySQL database.
+ 
+ #### Third-Party API Integration:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Upon successful order processing, the order details are submitted to a specified third-party API endpoint via a POST request in JSON format.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### API Request Queueing:
 
-## Laravel Sponsors
+- To handle high demand, a method is suggested to queue API requests, ensuring new orders wait until the configured number of parallel requests are processed.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Web Form with IndexedDB:
 
-### Premium Partners
+- A simple web form is created with three input parameters.
+- The submitted form values are stored in the browser-based IndexedDB.
+- A data table is provided to view the stored information from IndexedDB.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Table of Contents
 
-## Contributing
+- Requirements
+- Installation
+- Configuration
+- Running the Project
+- API Endpoints
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Requirements
 
-## Code of Conduct
+- PHP 8.x
+- Composer
+- MySQL
+- Laravel 9.x
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Installation
 
-## Security Vulnerabilities
+#### 1.Clone the repository:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- git clone https://github.com/dineshabey/php-order-api.git
 
-## License
+- cd php-order-api
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 2.Install dependencies:
+
+composer install
+
+#### 3.Create a .env file:
+
+cp .env.example .env
+
+#### 4.Generate an application key:
+
+php artisan key:generate
+
+#### 5.Set up your database in the .env file:
+
+- Update .env 
+
+DB_CONNECTION=mysql
+
+DB_HOST=127.0.0.1
+
+DB_PORT=3306
+
+DB_DATABASE=your_database_name
+
+DB_USERNAME=your_database_username
+
+DB_PASSWORD=your_database_password
+
+REDIS_CLIENT=redis
+
+#### 6.Run the migrations to create the required tables:
+
+php artisan migrate
+
+### Running the Project
+
+#### 1.Start the Laravel development server:
+
+php artisan serve
+
+#### 2.Run the queue worker:
+
+php artisan queue:work
+
+#### 3.Access the Web Form:
+
+ Open your browser and navigate to http://localhost:8000.
+ Use the simple web form to add data.
+ The submitted data will be stored in the browser's IndexedDB.
+
+### API Endpoints
+
+- Refer to API full document:https://drive.google.com/file/d/1BugHX6qejQHaMLQD4JOqXv4u6ZH5Em6L/view?usp=drive_link
+- Json API cpllection : https://drive.google.com/file/d/1kp_wtTzIXA7N6qCwbHFzQ7Ep-htAADJ7/view?usp=drive_link
+
+### Steps to Import the Collection:
+
+1. Open Postman. https://www.postman.com/
+2. Click on the `Import` button in the top left corner.
+3. Select the `Upload Files` tab.
+4. Choose the attached JSON file and click `Open`.
+5. The collection will be imported into your Postman.
+
+
