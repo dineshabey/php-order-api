@@ -104,8 +104,7 @@ php artisan queue:work
 
 ### API Endpoints
 
-- Refer to API full document:https://drive.google.com/file/d/1BugHX6qejQHaMLQD4JOqXv4u6ZH5Em6L/view?usp=drive_link
-- Json API cpllection : https://drive.google.com/file/d/1kp_wtTzIXA7N6qCwbHFzQ7Ep-htAADJ7/view?usp=drive_link
+- Refer to API full document and Json API cpllection (Attached with email)
 
 ### Steps to Import the Collection:
 
